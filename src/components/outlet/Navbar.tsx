@@ -3,7 +3,7 @@ import { ModeToggle } from "../mode-toggle";
 
 const Navbar = () => {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl px-5 mx-auto">
       <div className="flex gap-6">
         <div>
           <Link to={"/"}>

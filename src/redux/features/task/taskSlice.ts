@@ -17,6 +17,22 @@ const initialState: InitialState = {
       isCompleted: false,
       priority: "High",
     },
+    {
+      id: "asdfjkl",
+      title: "Initialize frontend",
+      description: "Create Home page, and routing",
+      dueDate: "2025-11",
+      isCompleted: false,
+      priority: "Medium",
+    },
+    {
+      id: "asdfjkl",
+      title: "Create github repo",
+      description: "Create Home page, and routing",
+      dueDate: "2025-11",
+      isCompleted: false,
+      priority: "Low",
+    },
   ],
   filter: "all",
 };
