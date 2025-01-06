@@ -32,11 +32,12 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { useAppdispatch } from "@/redux/hook";
 import { addTask } from "@/redux/features/task/taskSlice";
+import { ITask } from "@/types";
 
 export function AddTaskModal() {
   const form = useForm();
@@ -44,9 +45,9 @@ export function AddTaskModal() {
   const dispatch = useAppdispatch();
 
   // data will be sended to the reducer
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
-    dispatch(addTask(data));
+    dispatch(addTask(data as ITask));
   };
 
   return (
