@@ -35,12 +35,18 @@ import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { useAppdispatch } from "@/redux/hook";
+import { addTask } from "@/redux/features/task/taskSlice";
 
 export function AddTaskModal() {
   const form = useForm();
 
+  const dispatch = useAppdispatch();
+
+  // data will be sended to the reducer
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(addTask(data));
   };
 
   return (
