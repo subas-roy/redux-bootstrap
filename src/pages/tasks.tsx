@@ -13,7 +13,7 @@ const Tasks = () => {
       <h1>Tasks</h1>
       <AddTaskModal />
       {tasks.map((task) => (
-        <TaskCard task={task} />
+        <TaskCard task={task} key={task.id} />
       ))}
     </div>
   );
