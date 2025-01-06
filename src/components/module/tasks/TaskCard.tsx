@@ -1,14 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
+import {
+  deleteTask,
+  toggleCompleteState,
+} from "@/redux/features/task/taskSlice";
+import { useAppdispatch } from "@/redux/hook";
 import { ITask } from "@/types";
-import { Trash2 } from "lucide-react";
+import { Edit, Trash2 } from "lucide-react";
 
 interface IProps {
   task: ITask;
 }
 
 const TaskCard = ({ task }: IProps) => {
+  const dispatch = useAppdispatch();
   return (
     <div className="border px-2 py-3 rounded-md mt-3">
       <div className="flex justify-between items-center">
@@ -24,9 +30,15 @@ const TaskCard = ({ task }: IProps) => {
         </div>
         <div className="flex gap-3 items-center">
           <Button>
+            <Edit />
+          </Button>
+          <Button onClick={() => dispatch(deleteTask(task.id))}>
             <Trash2 />
           </Button>
-          <Checkbox />
+          <Checkbox
+            checked={task.isCompleted}
+            onClick={() => dispatch(toggleCompleteState(task.id))}
+          />
         </div>
       </div>
       <p className="mt-5">{task.description}</p>
