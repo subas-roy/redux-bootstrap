@@ -16,13 +16,17 @@ const initialState: InitialState = {
       description: "fasdfdsaf",
       priority: "high",
       dueDate: "2025-01-07T18:00:00.000Z",
+      assignedTo: "sdd",
     },
   ],
   filter: "all",
 };
 
 // Pick emarges data from existing type or interface
-type DraftTask = Pick<ITask, "title" | "description" | "dueDate" | "priority">;
+type DraftTask = Pick<
+  ITask,
+  "title" | "description" | "dueDate" | "priority" | "assignedTo"
+>;
 
 const createTask = (taskData: DraftTask): ITask => {
   return { id: nanoid(), isCompleted: false, ...taskData };
