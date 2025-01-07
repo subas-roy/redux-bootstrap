@@ -1,12 +1,11 @@
 import { AddUserModal } from "@/components/module/users/AddUserModal";
-import { selectUsers } from "@/redux/features/user/userSlice";
-import { useAppSelector } from "@/redux/hook";
+import { removeUser, selectUsers } from "@/redux/features/user/userSlice";
+import { useAppdispatch, useAppSelector } from "@/redux/hook";
 import { Trash2 } from "lucide-react";
 
 const Users = () => {
+  const dispatch = useAppdispatch();
   const users = useAppSelector(selectUsers);
-
-  console.log(users);
 
   return (
     <div className="mx-auto max-w-7xl px-5 mt-20">
@@ -21,7 +20,10 @@ const Users = () => {
               <p>{user.name}</p>
             </div>
             <div>
-              <Trash2 className="text-red-500" />
+              <Trash2
+                onClick={() => dispatch(removeUser(user.id))}
+                className="text-red-500"
+              />
             </div>
           </div>
         ))}
